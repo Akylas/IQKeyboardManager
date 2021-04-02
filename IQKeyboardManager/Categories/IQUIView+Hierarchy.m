@@ -170,6 +170,11 @@
     {
         if ([superview isKindOfClass:classType])
         {
+            // prevent using an horizontal UICollectionView as the scrollview
+            if ([superview isKindOfClass:[UICollectionView class]] && superview.collectionViewLayout.scrollDirection = UICollectionViewScrollDirection.Horizontal){
+                superview = superview.superview;
+                continue;
+            }
             //If it's UIScrollView, then validating for special cases
             if ([superview isKindOfClass:[UIScrollView class]])
             {
